@@ -19,7 +19,8 @@ class IndexControllerFactory implements FactoryInterface
     {
         $realServiceLocator = $serviceLocator->getServiceLocator();
         $serviceOne = $realServiceLocator->get('Application\Service\ServiceOne');
-        return new IndexController($serviceOne);
+        $serviceTwo = $realServiceLocator->get('Application\Service\ServiceTwo');
+        return new IndexController($serviceOne, $serviceTwo);
     }
 
 }

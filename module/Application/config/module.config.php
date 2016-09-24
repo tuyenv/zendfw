@@ -22,6 +22,31 @@ return array(
                     ),
                 ),
             ),
+            'exp'=> [
+                'type' => 'segment',
+                'options'=> [
+                    'route'=>'/exp',
+                    'defaults'=>[
+                        'controller'=>\Application\Controller\ExpController::class,
+                        'action'=>'index'
+                    ]
+                ],
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Segment',
+                        'options' => array(
+                            'route'    => '[/:action]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
+                            ),
+                            'defaults' => array(
+                            ),
+                        ),
+                    ),
+                ),
+            ],
             // The following is a route to simplify getting started creating
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
@@ -62,6 +87,7 @@ return array(
         'factories' => array(
             'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
             'Application\Service\ServiceOne' => 'Application\Factory\Service\ServiceOneFactory',
+            'Application\Service\ServiceTwo' => 'Application\Factory\Service\ServiceTwoFactory',
         ),
     ),
     'translator' => array(

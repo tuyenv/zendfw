@@ -12,19 +12,29 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Service\ServiceOne;
+use Application\Service\ServiceTwo;
 
 class IndexController extends AbstractActionController
 {
     public $serviceOne;
+    public $serviceTwo;
 
-    public function __construct(ServiceOne $serviceOne)
-    {
+    public function __construct(
+        ServiceOne $serviceOne,
+        ServiceTwo $serviceTwo
+    ) {
         $this->serviceOne = $serviceOne;
+        $this->serviceTwo = $serviceTwo;
     }
 
     public function indexAction()
     {
-        $this->serviceOne->IamOne();
+        $serviceTwo = new ServiceTwo();
+        $serviceTwo->IamService();
+
+
+        $this->serviceTwo->IamService();
+        $this->serviceOne->IamService();
         return new ViewModel();
     }
 }

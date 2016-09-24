@@ -1,10 +1,10 @@
 <?php
 namespace Application\Service;
 
-class ServiceOne
+class ServiceTwo
 {
     public function IamService()
     {
-        echo 'I am service one <br>';
+        echo 'I am service two <br>';
     }
 }
